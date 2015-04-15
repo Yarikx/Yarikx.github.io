@@ -12,3 +12,7 @@ github_username:  yarikx
 markdown: redcarpet
 highlighter: pygments
 
+redcarpet:
+    extensions: ["smart"]
+
+

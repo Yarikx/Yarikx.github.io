@@ -267,6 +267,7 @@ Fasten your seat belts, we will try to fix!
 ###Generic callback
 
 If we look closer to our Callback interfaces we can spot the common pattern:
+
 1. All of them have a method that delivers the result (`onCutestCatSaved`, `onCatListReceived`, `onCatStored`)
 2. Most of them (all in our case) have a method to handle errors that happen during operation (`onError`, `onQueryFailed`, `onStoreFailed`)
 
@@ -471,6 +472,7 @@ Code is even uglier now, but we will fix it, so...
 ###Breaking things
 
 Here is our happy-path dataflow here:
+
 ```
          (async)                 (sync)           (async)
 query ===========> List<Cat> -------------> Cat ==========> Uri
@@ -579,6 +581,7 @@ Remaining code is just boilerplate noise to start another `AsyncJob` and to prop
 Moreover, this noise isn't task-specific -- so we can actually move it somewhere to not distract us from the actual code.
 
 So how could we write it? Two thing we need to have to implement this operation:
+
 1. `AsyncJob` which result we will transform
 2. Transforming function
 
@@ -903,10 +906,11 @@ Hey, you don't need to copy these classes into your current project.
 Because we just implemented poorly written, non thread safe version of small part of RxJava.
 
 There are only some differences:
- - `AsyncJob<T>` is actually [`Observable<T>`](http://reactivex.io/documentation/observable.html) and it can deliver not just a single result but a sequence (possibly empty) of them.
- - `Callback<T>` is [`Observer<T>`](http://reactivex.io/documentation/operators/subscribe.html)  and besides of methods `onNext(T t)`, `onError(Throwable t)` has method `onCompleted()` that will notify that the `Observable` it wraps finished emitting items (as it can emit a sequence of them)
- - `abstract void start(Callback<T> callback)` corresponds to [`Subscription subscribe(final Observer<? super T> observer)`](http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer)) that also returns [`Subscription`](http://reactivex.io/RxJava/javadoc/rx/Subscription.html) which you can use to cancel receiving items, when you don't need  them anymore.
- - Besides methods `map` and `flatMap` `Observable` has [additional](http://reactivex.io/documentation/operators.html) useful operations over Observalbes.
+
+* `AsyncJob<T>` is actually [`Observable<T>`](http://reactivex.io/documentation/observable.html) and it can deliver not just a single result but a sequence (possibly empty) of them.
+* `Callback<T>` is [`Observer<T>`](http://reactivex.io/documentation/operators/subscribe.html)  and besides of methods `onNext(T t)`, `onError(Throwable t)` has method `onCompleted()` that will notify that the `Observable` it wraps finished emitting items (as it can emit a sequence of them)
+* `abstract void start(Callback<T> callback)` corresponds to [`Subscription subscribe(final Observer<? super T> observer)`](http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer)) that also returns [`Subscription`](http://reactivex.io/RxJava/javadoc/rx/Subscription.html) which you can use to cancel receiving items, when you don't need  them anymore.
+* Besides methods `map` and `flatMap` `Observable` has [additional](http://reactivex.io/documentation/operators.html) useful operations over Observalbes.
 
 Here is an example how our code will look like with using RxJava:
 
