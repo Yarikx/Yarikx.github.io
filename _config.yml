@@ -1,0 +1,14 @@
+# Site settings
+title: Yaroslav Heriatovych
+email: Yarikx@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Personal thoughts about Android Development, Functional Programming and RxJava.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yarikx.github.io" # the base hostname & protocol for your site
+twitter_username: yarikx
+github_username:  yarikx
+
+# Build settings
+markdown: redcarpet
+highlighter: pygments
+
