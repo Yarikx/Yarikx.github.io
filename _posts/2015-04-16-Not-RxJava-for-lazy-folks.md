@@ -992,4 +992,18 @@ You can see that the code is the same except using `Observable` instead of `Asyn
 
 If you still here I suggest you to relax, think a bit about duality of sync/async and watch this awesome [video](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote-Duality) from [Erik Meijer](http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)). 
 
+###Useful Links
+
+* http://reactivex.io/
+* https://github.com/ReactiveX/RxJava
+* https://github.com/ReactiveX/RxJava/wiki
+* http://queue.acm.org/detail.cfm?id=2169076
+* https://www.coursera.org/course/reactive
+* http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/
+
+
+###Acknowledgment
+Thanks to my friend Alexander Yakushev for help with translation
+
+
 
