@@ -289,7 +289,7 @@ And let's just create `ApiWrapper` to change signature of our calls:
 public class ApiWrapper {
     Api api;
 
-    private void queryCats(String query, Callback<List<Cat>> catsCallback){
+    public void queryCats(String query, Callback<List<Cat>> catsCallback){
         api.queryCats(query, new Api.CatsQueryCallback() {
             @Override
             public void onCatListReceived(List<Cat> cats) {
@@ -303,7 +303,7 @@ public class ApiWrapper {
         });
     }
 
-    private void store(Cat cat, Callback<Uri> uriCallback){
+    public void store(Cat cat, Callback<Uri> uriCallback){
         api.store(cat, new Api.StoreCallback() {
             @Override
             public void onCatStored(Uri uri) {
@@ -994,7 +994,7 @@ If you still here I suggest you to relax, think a bit about duality of sync/asyn
 
 ###Useful Links
 
-* http://reactivex.io/
+* [http://reactivex.io/]
 * https://github.com/ReactiveX/RxJava
 * https://github.com/ReactiveX/RxJava/wiki
 * http://queue.acm.org/detail.cfm?id=2169076
