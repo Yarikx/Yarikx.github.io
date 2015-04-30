@@ -355,7 +355,7 @@ But can we do even better? Sure!
 
 ###You gotta keep it separated
 
-Let's look now on our async operations(`queryCats`, `queryCats` and resulting `saveTheCutestCat`).
+Let's look now on our async operations(`queryCats`, `store` and resulting `saveTheCutestCat`).
 All of them follow the same pattern. The method that invokes them has some valuable arguments (`query`, `cat`) and a callback object as one of the arguments. 
 Once more: Any async operation takes all the regular arguments and additionally a callback. What if we try to separate these stages, so that every async operation will take only valuable arguments, and then return some temporary object that will take callback.
 
@@ -901,7 +901,7 @@ All errors will be passed directly to the final callback.
 And finally...
 
 ##[RxJava](https://github.com/ReactiveX/RxJava)
-
+You gotta keep it separated
 Hey, you don't need to copy these classes into your current project.
 Because we just implemented poorly written, non thread safe version of small part of RxJava.
 
