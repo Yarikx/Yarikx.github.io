@@ -901,7 +901,7 @@ All errors will be passed directly to the final callback.
 And finally...
 
 ##[RxJava](https://github.com/ReactiveX/RxJava)
-You gotta keep it separated
+
 Hey, you don't need to copy these classes into your current project.
 Because we just implemented poorly written, non thread safe version of small part of RxJava.
 
