@@ -23,11 +23,11 @@ This article is positioned as a small walk-through on how to reorganize messy As
 
 So If you are still curious let's get started!
 
-##Cat App
+## Cat App
 So let's create a *real world* example. So we know that cats are the engine of technology progress, so let's build 
 a typical app for downloading cat pictures.
 
-####So here is the task:
+#### So here is the task:
 > We have a webservice that provides api to search the whole internet for
 > images of cats by given query. Every image will contain cuteness
 > parameter - integer value that describes how cute is that picture. Our
@@ -38,7 +38,7 @@ We will focus only on downloading, processing and saving cats data.
 
 So let's start:
 
-##Model and API
+## Model and API
 
 Here is a simple data structure that will describe our 'Cat'
 
@@ -92,12 +92,12 @@ And we wait while function is doing its work.
 
 So simple and yet so powerful. Let's think about another advantages of simple functions:
 
-###Composition
+### Composition
 As you can see we created one function (`saveTheCutestCat`) from 3 others, thus we composed them.
 Any of those functions is like LEGO blocks: we use them to connect one to another to get _composed_ LEGO block (which actually can be composed later).
 Composing functions is so simple -- just feed result of one function as argument to another in right order, what could be simpler?
 
-###Error propagation
+### Error propagation
 Another good thing about functions is the way we deal with errors. Any function can terminate its execution with error, in java we call it *throwing an Exception*. And this error can be handled on any level.
 In java we do this with *try/catch* block.
 The key point here is that we don't need to handle errors for every function, but we can handle *all* possible errors for the whole block of code. Like:
@@ -116,14 +116,14 @@ try{
 In this case we will handle any errors that happen during the execution.
 Or we can propagate it to the next level, if we just leave our code without *try/catch* block.
 
-##Go Async
+## Go Async
 
 But we live in a world where we cannot wait. Sometimes it's not possible to have only blocking calls. And actually in android you always need to deal with asynchronous code.
 
 Take for example Android’s default `OnClickListener`. When you want to handle a view click, you must provide a listener (callback) which will be invoked when user clicks. And there is no reasonable way to receive clicks in a blocking manner. So clicks are always asynchronous. 
 So let's try to deal with async code now.
 
-####Async network call
+#### Async network call
 Let's now imagine that to make a query we use some non-blocking HTTP client (like [Ion](https://github.com/koush/ion)). 
 So imagine our `cats-sdk.jar` has updated and replaced it's API with async calls.
 
@@ -257,14 +257,14 @@ In this code errors are not propagated automatically, we need to re-pass it furt
 
 Is it harder to read this code and to find possible bugs? Definitely!
 
-###The end?
+### The end?
 
 So what? what can we do with it? Are we trapped in this world of non-composable callback hell?
 Fasten your seat belts, we will try to fix!
 
-##To the better world!
+## To the better world!
 
-###Generic callback
+### Generic callback
 
 If we look closer to our Callback interfaces we can spot the common pattern:
 
@@ -353,7 +353,7 @@ Ok, little bit smaller than previous one. We could decrease the level of callbac
 
 But can we do even better? Sure! 
 
-###You gotta keep it separated
+### You gotta keep it separated
 
 Let's look now on our async operations(`queryCats`, `store` and resulting `saveTheCutestCat`).
 All of them follow the same pattern. The method that invokes them has some valuable arguments (`query`, `cat`) and a callback object as one of the arguments. 
@@ -469,7 +469,7 @@ Wow, the previous version was simpler. What benefits do we have now? -- Now we a
 
 Code is even uglier now, but we will fix it, so...
 
-###Breaking things
+### Breaking things
 
 Here is our happy-path dataflow here:
 
@@ -549,7 +549,7 @@ Looks bigger, but cleaner. Lower level of nested callback, understandable variab
 
 Looks better now, but let's do something more:
 
-###Simple Mapping
+### Simple Mapping
 
 Now I want you to look at the part where we create `AsyncJob<Cat> cutestCatAsyncJob`:
 
@@ -677,7 +677,7 @@ public class CatsHelper {
 
 Much better. Creating `AsyncJob<Cat> cutestCatAsyncJob` is now takes 6 lines of code and only single level of callback.
 
-###Advanced mapping
+### Advanced mapping
 
 Cool stuff, but another part of creating `AsyncJob<Uri> storedUriAsyncJob` is still ugly. Can we apply map here? 
 Let's give it a try:
@@ -847,7 +847,7 @@ public class CatsHelper {
 
 Yeah! It works, and it's much more simpler to read and to write.
 
-###Final point
+### Final point
 
 Look at the resulting code again. Does it look familiar to you? Take one more look.
 No? Will it be more easy if I will convert anonymous classes to java8 lambdas (just for better look, the logic is the same).
@@ -987,12 +987,12 @@ public class CatsHelper {
 You can see that the code is the same except using `Observable` instead of `AsyncJob`
 
 
-#Conclusion
+# Conclusion
  We see how with simple transformation we can create an abstraction over Async operations. This abstraction can be used to operate and compose async tasks just like simple functions. With this approach we can get rid of nested callbacks and hand-written error propagation during handling Async results.
 
 If you still here I suggest you to relax, think a bit about duality of sync/async and watch this awesome [video](https://channel9.msdn.com/Events/Lang-NEXT/Lang-NEXT-2014/Keynote-Duality) from [Erik Meijer](http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)). 
 
-###Useful Links
+### Useful Links
 
 * [http://reactivex.io/]
 * https://github.com/ReactiveX/RxJava
@@ -1002,7 +1002,7 @@ If you still here I suggest you to relax, think a bit about duality of sync/asyn
 * http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/
 
 
-###Acknowledgment
+### Acknowledgment
 Thanks to my friend Alexander Yakushev for help with translation
 
 

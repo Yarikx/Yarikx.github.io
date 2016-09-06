@@ -9,10 +9,7 @@ twitter_username: yarikx
 github_username:  yarikx
 
 # Build settings
-markdown: redcarpet
-highlighter: pygments
-
-redcarpet:
-    extensions: ["smart"]
+markdown: kramdown
+theme: minima
 
 
