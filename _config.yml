@@ -12,4 +12,6 @@ github_username:  yarikx
 markdown: kramdown
 theme: minima
 
+gems:
+  - jekyll-seo-tag
 
