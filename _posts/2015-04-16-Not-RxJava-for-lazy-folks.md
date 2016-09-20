@@ -5,6 +5,8 @@ date:   2015-04-16
 categories: RxJava Android 
 permalink: /NotRxJava/
 comments: true
+description: How to understand RxJava by implementing one
+keywords: "RxJava, Android, Java, Observable, Observer, reactivex.io, reactive"
 ---
 
 These days if you are an android developer, you might hear some hype about RxJava. 
