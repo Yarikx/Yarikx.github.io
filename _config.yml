@@ -14,5 +14,6 @@ theme: minima
 
 gems:
   - jekyll-seo-tag
-  - jekyll-sitemap
+  - jekyll-sitemap  
+  - jekyll-gist
 
