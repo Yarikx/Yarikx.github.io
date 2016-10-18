@@ -17,3 +17,6 @@ gems:
   - jekyll-sitemap  
   - jekyll-gist
 
+gist:
+  noscript: false
+
