@@ -2,3 +2,4 @@
 >
 > + [Part 0: Prologue](/Reductor-prologue/)
 > + [Part 1: Introduction](/Reductor-introduction/)
+> + [Part 2: Composing reducers](/Reductor-composition/)
