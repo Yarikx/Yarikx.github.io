@@ -55,7 +55,7 @@ Then we create corresponding `Store`:
 
 {% gist Yarikx/b46d99554044aebcfe78ba4cb6fdb9a8 %}
 
-As it might look OKish initially, this idea is not as good as it seems.
+As it might look OK-ish initially, this idea is not as good as it seems.
 By having two different stores we've lost the important property of our application -- *Single source of truth*.
 It means that each time we want to dispatch the action, we need to know which store will handle it. 
 That's not good.
