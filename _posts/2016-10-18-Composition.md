@@ -101,7 +101,7 @@ But we still want logically separate actions that only relate to `List<TodoItem>
 To do this we need to remind ourselves that `Reducer` is still a function with signature `(state, action) => state`.
 And what we, as programmers are taught to do? -- Right! Compose functions.
 
-If we will decompose our `AppStateReducer` to smaller functions to compute each sub-state if will look like this:
+If we will decompose our `AppStateReducer` to smaller functions to compute each sub-state it will look like this:
 
 {% gist Yarikx/1e79f728629a500dbf3efd6af51f9d79 %}
 
@@ -125,7 +125,7 @@ Our main reducer contains only the logic of dispatching actions to "sub-reducers
 That's the all it needs to know.
 
 On the other hand, our "sub-reducers" only handle the logic related to particular "sub-state".
-And they no nothing about the outer state.
+And they know nothing about the outer state.
 
 That's what I call composition.
 
