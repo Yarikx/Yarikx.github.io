@@ -912,7 +912,7 @@ There are only some differences:
 * `AsyncJob<T>` is actually [`Observable<T>`](http://reactivex.io/documentation/observable.html) and it can deliver not just a single result but a sequence (possibly empty) of them.
 * `Callback<T>` is [`Observer<T>`](http://reactivex.io/documentation/operators/subscribe.html)  and besides of methods `onNext(T t)`, `onError(Throwable t)` has method `onCompleted()` that will notify that the `Observable` it wraps finished emitting items (as it can emit a sequence of them)
 * `abstract void start(Callback<T> callback)` corresponds to [`Subscription subscribe(final Observer<? super T> observer)`](http://reactivex.io/RxJava/javadoc/rx/Observable.html#subscribe(rx.Observer)) that also returns [`Subscription`](http://reactivex.io/RxJava/javadoc/rx/Subscription.html) which you can use to cancel receiving items, when you don't need  them anymore.
-* Besides methods `map` and `flatMap` `Observable` has [additional](http://reactivex.io/documentation/operators.html) useful operations over Observalbes.
+* Besides methods `map` and `flatMap` `Observable` has [additional](http://reactivex.io/documentation/operators.html) useful operations over Observables.
 
 Here is an example how our code will look like with using RxJava:
 
